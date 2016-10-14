@@ -10218,26 +10218,28 @@
 
 	"use strict";
 	var $ = __webpack_require__ (6);
-	var mobileBreakpoint = 768;
+	var nav_bar = $("#nav"),
+	    nav_menu = $(".mobile-open"),
+	    nav_close = $(".mobile-close"),
+	    nav_button = $(".nav-button");
 
-	function resize() {
-	    $(window).resize( function (){
-	        var sw = document.documentElement.clientWidth;
-	        var sh = document.documentElement.clientHeight;
-	        checkMobile(sw, sh);
-	    });
-	}
+	nav_menu.click(function() {
+	    $(this).removeClass("active");
+	    nav_bar.addClass("active");
+	    nav_close.addClass("active");
+	});
 
-	function checkMobile(sw, sh){
-	    var mobile = (sw > mobileBreakpoint) ? false : true;
-	    if (!mobile){
-	        $("#nav").show();
-	    } else {
-	        $("#nav").hide();
-	    }
-	}
+	nav_close.click(function() {
+	    nav_bar.removeClass("active");
+	    $(this).removeClass("active");
+	    nav_menu.addClass("active");
+	});
 
-	resize();
+	nav_button.click(function() {
+	    nav_bar.removeClass("active");
+	    nav_close.removeClass("active");
+	    nav_menu.addClass("active");
+	})
 
 
 /***/ },
